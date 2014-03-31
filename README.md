@@ -1,4 +1,4 @@
 My preferred configurations
 ===========================
 
-Clone to `~` and install with `stow *`
+Clone to `~` initialize submidules with `git submodule update --init` and install with `stow *`

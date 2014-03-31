@@ -40,121 +40,6 @@ if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
 
-#hostnam=$(hostname)
-#usernam=$(whoami)
-#temp="$(tty)"
-##   Chop off the first five chars of tty (ie /dev/):
-#cur_tty="${temp:5}"
-#unset temp
-#
-#function prompt_command {
-#LASTSTATUS="$?"
-#
-#if (( $LASTSTATUS > 0 ))
-#then
-#  LASTCOLOR=$(tput setaf 1; tput bold)
-#  LASTSTATUS="☠"
-#else
-#  LASTCOLOR=$(tput setaf 2; tput bold)
-#  LASTSTATUS="✓"
-#fi
-#
-#git_br=$(__git_ps1 "(%s)")
-#git_br=${git_br:1:-1}
-#
-#if (( ${#git_br} > 0 ))
-#then
-#  git_br_pre="┤"
-#  git_br_post_color=$(tput setaf 6; tput bold)
-#  git_br_post="├─"
-#else
-#  git_br_pre="─"
-#  if (( $(tput colors) > 8 ))
-#  then
-#    git_br_post_color=$(tput setaf 32; tput bold)
-#  else
-#    git_br_post_color=$(tput setaf 4; tput bold)
-#  fi
-#  git_br_post="──"
-#fi
-#
-##   Find the width of the prompt:
-#TERMWIDTH=${COLUMNS}
-#
-##   Add all the accessories below ...
-#local temp="──┤${usernam}@${hostnam}:${cur_tty}├───┤${PWD}├┤$git_br├──"
-#
-#let fillsize=${TERMWIDTH}-${#temp}
-#if [ "$fillsize" -gt "0" ]
-#then
-#  fill="───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"
-#  #   It's theoretically possible someone could need more
-#  #   dashes than above, but very unlikely!  HOWTO users,
-#  #   the above should be ONE LINE, it may not cut and
-#  #   paste properly
-#  fill="${fill:0:${fillsize}}"
-#  newPWD="${PWD}"
-#fi
-#
-#if [ "$fillsize" -lt "0" ]
-#then
-#  fill=""
-#  let cut=3-${fillsize}
-#  newPWD="...${PWD:${cut}}"
-#fi
-#}
-#
-#PROMPT_COMMAND=prompt_command
-#
-#function twtty {
-#
-#local WHITE="\[$(tput setaf 7; tput bold)\]"
-#local NO_COLOUR="\[\033[0m\]"
-#
-#local LIGHT_BLUE="\[$(tput setaf 6; tput bold)\]"
-#local BLUE="\[$(tput setaf 4; tput bold)\]"
-#local YELLOW="\[$(tput setaf 3; tput bold)\]"
-#local RED="\[$(tput setaf 1; tput bold)\]"
-#local GREEN="\[$(tput setaf 2; tput bold)\]"
-#
-#if (( $(tput colors) > 8 ))
-#then
-#BLUE="\[$(tput setaf 32; tput bold)\]"
-#fi
-#
-#case $TERM in
-#  xterm*|rxvt*)
-#    TITLEBAR='\[\033]0;\u@\h:\w\007\]'
-#    ;;
-#  *)
-#    TITLEBAR=""
-#    ;;
-#esac
-#
-#if [[ $usernam == 'root' ]]
-#then
-#  USERCOLOR=$RED
-#else
-#  USERCOLOR=$BLUE
-#fi
-#
-#PS1='$(printf "%$((COLUMNS-1))s\r")'"${TITLEBAR}\
-#${BLUE}─${LIGHT_BLUE}─┤\
-#${USERCOLOR}\${usernam}${LIGHT_BLUE}@${YELLOW}\${hostnam}${LIGHT_BLUE}:${WHITE}\${cur_tty}\
-#${LIGHT_BLUE}├─${BLUE}─\${fill}${LIGHT_BLUE}─┤\
-#${BLUE}\${newPWD}\
-#${LIGHT_BLUE}├\${git_br_pre}${YELLOW}\${git_br}\[\${git_br_post_color}\]\${git_br_post}${BLUE}─\
-#\n\
-#${BLUE}─${LIGHT_BLUE}─┤\
-#${BLUE}\$(date +%H%M)${LIGHT_BLUE}:${BLUE}\$(date \"+%a,%d %b %y\")\
-#${LIGHT_BLUE}:${WHITE}\[\${LASTCOLOR}\]\${LASTSTATUS}${LIGHT_BLUE}├─\
-#${BLUE}─\
-#${NO_COLOUR} "
-#
-#PS2="${BLUE}─${LIGHT_BLUE}─┼─${BLUE}─${NO_COLOUR} "
-#
-#}
-
 # Prevent dropping a locked X to a term with my privs
 alias startx="exec startx"
 
@@ -167,18 +52,6 @@ else
   export EDITOR=vi
 fi
 export VISUAL=$EDITOR
-if [[ ! -f ~/.vimrc ]]
-then
-  cat  > ~/.vimrc << EOF
-  syntax on
-  set incsearch
-  set hlsearch
-  set ignorecase
-  set tabstop=2
-  set shiftwidth=2
-  set visualbell
-EOF
-fi
 
 # Timezone
 export TZ='America/New_York'
@@ -218,29 +91,6 @@ fi
 # make-kpkg stuff
 export CONCURRENCY_LEVEL=$PROCESSORS
 alias make-kpkg="MAKEFLAGS=\"\" make-kpkg --rootcmd fakeroot"
-
-## ssh-agent is a little safer than a passwordless key
-#SSH_ENV=~/.ssh/environment
-#
-#function start_agent {
-  #echo "Initialising new SSH agent..."
-  #/usr/bin/ssh-agent | sed 's/^echo/#echo/' > ${SSH_ENV}
-  #echo succeeded
-  #chmod 600 ${SSH_ENV}
-  #source ${SSH_ENV} > /dev/null
-  #/usr/bin/ssh-add;
-#}
-
-## Source SSH settings, if applicable
-#if [ -f "${SSH_ENV}" ]
-#then
-  #source ${SSH_ENV} > /dev/null
-  #ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-  #start_agent;
-  #}
-#else
-  #start_agent;
-#fi
 
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
 
