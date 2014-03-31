@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/stuart/src/hilary/node_modules/oae-tenants'
+let g:netrw_dirhist_2='/home/stuart/src/hilary/node_modules/oae-tenants/lib'
+let g:netrw_dirhist_3='/home/stuart/src/hilary/node_modules/oae-groups/install'
+let g:netrw_dirhist_4='/home/stuart/src/hilary/node_modules/oae-principals'
+let g:netrw_dirhist_5='/home/stuart/src/hilary/node_modules/oae-authentication'
+let g:netrw_dirhist_6='/home/stuart/src/hilary/node_modules/oae-doc'
+let g:netrw_dirhist_7='/home/stuart/src/hilary/node_modules/oae-doc/lib'
+let g:netrw_dirhist_8='/home/stuart/src/hilary/node_modules/oae-principals'
+let g:netrw_dirhist_9='/home/stuart/src/hilary/node_modules/oae-config'

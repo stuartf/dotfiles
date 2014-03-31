@@ -1,0 +1,19 @@
+[user]
+	name = D. Stuart Freeman
+	email = stuart.freeman@et.gatech.edu
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+  ui = auto
+[gui]
+	recentrepo = /home/stuart/src/git/assignment
+	recentrepo = /home/stuart/src/git/sakai
+	recentrepo = /home/stuart/src/git/gatech-sakai
+[merge]
+	tool = vimdiff
+[core]
+	excludesfile = /home/stuart/.gitignore_global
+[alias]
+  find = "!f() { git ls-files |grep $@; }; f"
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --

@@ -1,0 +1,3 @@
+vim/.vim/bundle/*
+!vim/.vim/bundle/neobundle.vim
+mutt/.mutt/cache
