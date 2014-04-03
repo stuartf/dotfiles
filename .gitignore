@@ -1,3 +1,4 @@
 vim/.vim/bundle/*
 !vim/.vim/bundle/neobundle.vim
 mutt/.mutt/cache
+awesome/.config/awesome/wallpaper.png
