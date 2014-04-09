@@ -11,7 +11,7 @@ export EMAIL=stuart.freeman@et.gatech.edu
 set -o vi
 
 # don't put duplicate lines in the history. See bash(1) for more options
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth
 
 export NNTPSERVER=news.gmane.org
 
