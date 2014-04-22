@@ -491,3 +491,7 @@ naughty.config.presets.normal.opacity = 0.8
 naughty.config.presets.low.opacity = 0.8
 naughty.config.presets.critical.opacity = 0.8
 -- }}}
+
+-- {{{ Use dex for xdg autostart
+awful.util.spawn_with_shell("~/.config/awesome/dex -a -e Awesome")
+-- }}}

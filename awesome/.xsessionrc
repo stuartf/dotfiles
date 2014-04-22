@@ -1,7 +1,4 @@
 export STEAM_FRAME_FORCE_CLOSE=1
 export __GL_SYNC_TO_VBLANK=1
-/usr/bin/x-terminal-emulator -e ssh -X tyro.homelinux.com -t "tmux a"&
 xscreensaver -nosplash &
-pidgin &
-nm-applet &
 [[ -x "/usr/bin/nvidia-settings" ]] && /usr/bin/nvidia-settings --load-config-only --config=~/.nvidia-settings-rc &
