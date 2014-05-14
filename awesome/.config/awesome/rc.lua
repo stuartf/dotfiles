@@ -266,8 +266,8 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
-        memwidget,
-        cpuwidget,
+        s == 1 and memwidget or nil,
+        s == 1 and cpuwidget or nil,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
