@@ -94,9 +94,6 @@ alias make-kpkg="MAKEFLAGS=\"\" make-kpkg --rootcmd fakeroot"
 
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
 
-# keychain for ssh-agent
-[[ -x "/usr/bin/keychain" ]] && eval $(/usr/bin/keychain --eval -Q --quiet id_rsa)
-
 #twtty
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
