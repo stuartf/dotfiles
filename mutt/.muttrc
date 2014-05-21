@@ -123,7 +123,7 @@ send-hook .*@listserv\.uga\.edu set pgp_create_traditional = yes
 # Make it easy to generate abuse emails when in the junk folder
 folder-hook . 'set forward_format="[%a: %s]"'
 folder-hook . 'source ~/.mutt/header-weed'
-folder-hook . 'set signature="~/bin/sig|"'
+folder-hook . 'set signature="~/.mutt/sig|"'
 folder-hook Junk 'set forward_format="UCE Complaint: [%a: %s]"'
 folder-hook Junk 'unignore *'
 folder-hook Junk 'unset signature'
