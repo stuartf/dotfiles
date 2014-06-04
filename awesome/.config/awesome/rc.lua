@@ -59,17 +59,17 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
 {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
+    --awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    --awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
+    awful.layout.suit.floating,
     awful.layout.suit.magnifier
 }
 -- }}}
@@ -81,6 +81,12 @@ for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
 end
+-- }}}
+
+-- {{{
+-- Set default layouts for some tags
+  awful.tag.setncol(4, tags[1][2])
+  awful.tag.setmwfact(0.2, tags[1][2])
 -- }}}
 
 -- {{{ Menu
@@ -259,7 +265,6 @@ for s = 1, screen.count() do
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
-            mylauncher,
             mytaglist[s],
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
@@ -434,7 +439,8 @@ awful.rules.rules = {
     { rule = { class = "X-terminal-emulator" },
       properties = { opacity = 0.8 } },
     { rule = { class = "Chromium", role = "pop-up" },
-      properties = { tag = tags[1][2] } },
+      properties = { tag = tags[1][2] },
+      callback = awful.client.setslave },
     { rule = { class = "Pidgin" },
       properties = { tag = tags[1][2] } },
     { rule = { class = "Transmission-gtk" },
