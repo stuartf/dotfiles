@@ -9,6 +9,8 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+local vicious = require("vicious")
+local blingbling = require("blingbling")
 
 -- Load Debian menu entries
 local debian = {}
@@ -172,6 +174,18 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+cpu_graph = blingbling.line_graph({ height = 18,
+                                    width = 60,
+                                    show_text = false,
+                                    label = "$percent %",
+                                    rounded_size = 0.3
+                                  })
+vicious.register(cpu_graph, vicious.widgets.cpu, '$1', 1)
+
+mem_graph = blingbling.wlourf_circle_graph({radius= 5, height = 18, width = 18, show_text = false})
+mem_graph:set_graph_colors({{"#88aa00ff",0}, {"#d4aa00ff", 0.5}, {"#d45500ff",0.77}})
+vicious.register(mem_graph, vicious.widgets.mem, "$1% ($2MB/$3MB)", 12)
+
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
@@ -199,7 +213,11 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
+    if s == 1 then 
+      right_layout:add(cpu_graph)
+      right_layout:add(mem_graph)
+      right_layout:add(wibox.widget.systray())
+    end
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
