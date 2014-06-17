@@ -178,9 +178,14 @@ cpu_graph = blingbling.line_graph({ height = 18,
                                   })
 vicious.register(cpu_graph, vicious.widgets.cpu, '$1', 1)
 
-mem_graph = blingbling.wlourf_circle_graph({radius= 5, height = 18, width = 18, show_text = false})
-mem_graph:set_graph_colors({{"#88aa00ff",0}, {"#d4aa00ff", 0.5}, {"#d45500ff",0.77}})
-vicious.register(mem_graph, vicious.widgets.mem, "$1% ($2MB/$3MB)", 12)
+vicious.cache(vicious.widgets.mem)
+mem_graph = blingbling.progress_graph({height = 18, width = 8, rounded_size = 0.3})
+mem_graph:set_graph_color("#0022aaff")
+vicious.register(mem_graph, vicious.widgets.mem, "$1", 12)
+
+swap_graph = blingbling.progress_graph({height = 18, width = 8, rounded_size = 0.3})
+swap_graph:set_graph_color("#aa2200ff")
+vicious.register(swap_graph, vicious.widgets.mem, "$5", 12)
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
@@ -212,6 +217,7 @@ for s = 1, screen.count() do
     if s == 1 then 
       right_layout:add(cpu_graph)
       right_layout:add(mem_graph)
+      right_layout:add(swap_graph)
       right_layout:add(wibox.widget.systray())
     end
     right_layout:add(mytextclock)
@@ -377,7 +383,7 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
+                     -- focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
