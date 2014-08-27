@@ -405,6 +405,8 @@ awful.rules.rules = {
     { rule = { class = "Chromium", role = "pop-up" },
       properties = { tag = tags[1][2] },
       callback = awful.client.setslave },
+    { rule = { skip_taskbar = true },
+      properties = { floating = true } },
     { rule = { class = "Pidgin" },
       properties = { tag = tags[1][2] } },
     { rule = { class = "Transmission-gtk" },
