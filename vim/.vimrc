@@ -28,7 +28,7 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -43,6 +43,10 @@ NeoBundle 'majutsushi/tagbar'
 filetype plugin indent on "required for vundle
 
 NeoBundleCheck
+
+call neobundle#end()
+
+set ttyfast
 
 "airline doesn't show up until laststatus is 2 for some reason
 set laststatus=2
