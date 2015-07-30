@@ -41,7 +41,7 @@ end
 -- }}}
 
 -- Compositing manager for transparency
-awful.util.spawn_with_shell("unagi &")
+awful.util.spawn_with_shell("compton --backend glx --dbus &")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
