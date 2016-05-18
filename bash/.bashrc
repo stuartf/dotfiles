@@ -44,7 +44,12 @@ fi
 alias startx="exec startx"
 
 # Set up vim if we have it
-if which vim > /dev/null
+if which nvim > /dev/null
+then
+  export EDITOR=nvim
+  alias vi="nvim"
+  alias vim="nvim"
+elif which vim > /dev/null
 then
   export EDITOR=vim
   alias vi="vim -X"
