@@ -1,5 +1,13 @@
 syntax on
-set nocompatible
+
+if &compatible
+  set nocompatible
+endif
+
+if has('vim_starting')
+  set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
+endif
+
 set incsearch
 set hlsearch
 set ignorecase
@@ -8,10 +16,20 @@ set expandtab
 set shiftwidth=2
 set visualbell
 set background=dark
-"" filetype off for vundle
-filetype off
-"filetype plugin on
-"filetype plugin indent on
+
+call dein#begin(expand('~/.vim/dein/'))
+
+call dein#add('Shougo/dein.vim')
+
+call dein#add('tpope/vim-fugitive')
+call dein#add('scrooloose/nerdtree')
+call dein#add('scrooloose/syntastic')
+call dein#add('editorconfig/editorconfig-vim')
+call dein#add('bling/vim-airline')
+call dein#add('mhinz/vim-signify')
+call dein#add('majutsushi/tagbar')
+
+filetype plugin indent on "required for dein
 "autocmd FileType python set omnifunc=pythoncomplete#Complete
 "autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 "autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -20,33 +38,7 @@ filetype off
 "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 "autocmd FileType c set omnifunc=ccomplete#Complete
 
-"let g:vundle_default_git_proto = 'git'
-"set rtp+=~/.vim/bundle/vundle/
-"call vundle#rc()
-"Bundle 'gmarik/vundle'
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-endif
-
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'mhinz/vim-signify'
-NeoBundle 'majutsushi/tagbar'
-
-filetype plugin indent on "required for vundle
-
-NeoBundleCheck
-
-call neobundle#end()
-
-set ttyfast
+call dein#end()
 
 "airline doesn't show up until laststatus is 2 for some reason
 set laststatus=2

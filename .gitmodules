@@ -1,6 +1,6 @@
-[submodule "vim/.vim/bundle/neobundle.vim"]
-	path = vim/.vim/bundle/neobundle.vim
-	url = https://github.com/Shougo/neobundle.vim
 [submodule "awesome/.config/awesome/blingbling"]
 	path = awesome/.config/awesome/blingbling
 	url = git://github.com/cedlemo/blingbling.git
+[submodule "dein"]
+	path = vim/.vim/dein/repos/github.com/Shougo/dein.vim
+	url = https://github.com/Shougo/dein.vim
