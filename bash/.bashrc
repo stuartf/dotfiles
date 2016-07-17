@@ -27,6 +27,11 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
   debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+# set xterm-256color for vte based terminals
+if pgrep -aP $(ps -h -o ppid -p $$)|grep -q gnome-pty-helper; then
+  export TERM=xterm-256color
+fi
+
 # enable color support of ls
 if [ "$TERM" != "dumb" ]; then
   eval "`dircolors -b`"
