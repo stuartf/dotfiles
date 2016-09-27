@@ -24,8 +24,11 @@ else
   LASTSTATUS="✓"
 fi
 
-git_br=$(__git_ps1 "(%s)")
-git_br=${git_br:1:-1}
+if type -t __git_ps1 >> /dev/null
+then
+  git_br=$(__git_ps1 "(%s)")
+  git_br=${git_br:1:-1}
+fi
 
 if (( ${#git_br} > 0 ))
 then
