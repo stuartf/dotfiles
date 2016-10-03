@@ -28,7 +28,7 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # set xterm-256color for vte based terminals
-if pgrep -aP $(ps -h -o ppid -p $$)|grep -q gnome-pty-helper; then
+if pgrep -aP $(ps -h -o ppid -p $$ 2>/dev/null) 2>/dev/null |grep -q gnome-pty-helper; then
   export TERM=xterm-256color
 fi
 
@@ -49,12 +49,12 @@ fi
 alias startx="exec startx"
 
 # Set up vim if we have it
-if which nvim > /dev/null
+if which nvim &>/dev/null
 then
   export EDITOR=nvim
   alias vi="nvim"
   alias vim="nvim"
-elif which vim > /dev/null
+elif which vim 2>&1 > /dev/null
 then
   export EDITOR=vim
   alias vi="vim -X"
