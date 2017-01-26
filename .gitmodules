@@ -1,6 +1,3 @@
 [submodule "dein"]
 	path = vim/.vim/dein/repos/github.com/Shougo/dein.vim
 	url = https://github.com/Shougo/dein.vim
-[submodule "awesome/.config/awesome/awesompd"]
-	path = awesome/.config/awesome/awesompd
-	url = https://github.com/alexander-yakushev/awesompd.git
