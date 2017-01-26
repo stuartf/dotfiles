@@ -38,7 +38,7 @@ do
 end
 -- }}}
 
-awful.util.spawn_with_shell("compton --backend glx --dbus &")
+awful.spawn.with_shell("compton --backend glx --dbus &")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
@@ -346,7 +346,7 @@ clientkeys = awful.util.table.join(
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
-    awful.key({ modkey,           }, "z",      function () awful.util.spawn("xdg-screensaver lock") end),
+    awful.key({ modkey,           }, "z",      function () awful.spawn("xdg-screensaver lock") end),
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
@@ -549,5 +549,5 @@ naughty.config.presets.critical.opacity = 0.8
 -- }}}
 
 -- {{{ Use dex for xdg autostart
-awful.util.spawn_with_shell("~/.config/awesome/dex -a -e Awesome")
+awful.spawn.with_shell("~/.config/awesome/dex -a -e Awesome")
 -- }}}
