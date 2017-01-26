@@ -10,6 +10,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local vicious = require("vicious")
 local blingbling = require("blingbling")
+local assault = require('assault')
 
 -- Music player widget
 local awesompd = require("awesompd/awesompd")
@@ -42,6 +43,9 @@ do
     end)
 end
 -- }}}
+
+-- policykit authentication agent
+awful.util.spawn_with_shell("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
 
 -- Compositing manager for transparency
 awful.util.spawn_with_shell("compton --backend glx --dbus &")
@@ -172,6 +176,13 @@ mytasklist.buttons = awful.util.table.join(
                                               awful.client.focus.byidx(-1)
                                               if client.focus then client.focus:raise() end
                                           end))
+
+myassault = assault({
+  critical_level = 0.15,
+  critical_color = "#ff0000",
+  charging_color = "#00ff00"
+})
+
 
 musicwidget = awesompd:create() -- Create awesompd widget
 musicwidget.font = "Liberation Mono" -- Set widget font
