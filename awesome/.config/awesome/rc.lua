@@ -38,6 +38,7 @@ do
 end
 -- }}}
 
+awful.spawn("setxkbmap -option compose:ralt")
 awful.spawn.with_shell("compton --backend glx --dbus &")
 
 -- {{{ Variable definitions
